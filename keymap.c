@@ -28,7 +28,8 @@ enum layers{
   WIN_BASE,
   WIN_FN,
   NAV,
-  MOUSE
+  MOUSE,
+  FN
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -43,19 +44,19 @@ DF(BASE),      KC_COLN,        ALGR_T(KC_Q),   KC_J,           KC_K,           K
                KC_F,           KC_G,           KC_C,           KC_R,           KC_L,           ___,
                KC_D,           LT(SYM,KC_H),   LALT_T(KC_T),   LSFT_T(KC_N),   LCTL_T(KC_S),   KC_ENT,
                KC_B,           KC_M,           KC_W,           ALGR_T(KC_V),   KC_Z,           ___,
-               LT(MOUSE,KC_BSPC),MO(MOUSE),    LGUI_T(KC_DEL)),
+               LT(MOUSE,KC_BSPC),MO(FN),    LGUI_T(KC_DEL)),
 
 [SYM] = LAYOUT_LR(
-               KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,
-KC_TAB,        KC_QUOT,        KC_COMM,        KC_DOT,         KC_DQUO,        KC_PERC,       
+               KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,
+KC_TAB,        KC_QUOT,        KC_COMM,        KC_DOT,         KC_DQUO,        ___,       
 KC_ESC,        KC_EXLM,        KC_MINS,        KC_PLUS,        KC_EQL,         KC_UNDS,
-___,           KC_COLN,        KC_LABK,        KC_RABK,        KC_DLR,         KC_AT,
+___,           KC_COLN,        KC_LABK,        KC_RABK,        ___,            ___,
                ___,            ___,            KC_SPC,
 
-               KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,
-               KC_CIRC,        KC_HASH,        KC_LPRN,        KC_RPRN,        KC_BSLS,        ___,
-               KC_AMPR,        KC_SCLN,        KC_LBRC,        KC_RBRC,        KC_QUES,        KC_ENT,
-               KC_PIPE,        KC_ASTR,        KC_LCBR,        KC_RCBR,        KC_SLSH,        ___,
+               KC_CIRC,        KC_AMPR,        KC_ASTR,          ___,          ___,
+               ___,            ___,            KC_LPRN,        KC_RPRN,        KC_BSLS,        ___,
+               ___,            KC_SCLN,        KC_LBRC,        KC_RBRC,        KC_QUES,        KC_ENT,
+               KC_PIPE,        ___,            KC_LCBR,        KC_RCBR,        KC_SLSH,        ___,
                KC_BSPC,        ___,            KC_DEL),
 
 [WIN_BASE] = LAYOUT_ansi_84(
@@ -85,7 +86,7 @@ ___,           ___,            KC_ALGR,        ___,            ___,            _
                ___,            ___,            ___,            ___,            ___,
                ___,            KC_HOME,        KC_UP,          KC_END,         KC_PGUP,        ___,
                CW_TOGG,        KC_LEFT,        KC_DOWN,        KC_RGHT,        KC_PGDN,        KC_ENT,
-               ___,            KC_PSCR,        ___,            KC_INS,         ___,            ___,
+               ___,            ___,            ___,            ___,            ___,            ___,
                KC_BSPC,        ___,            KC_DEL),
 
 [MOUSE] = LAYOUT_LR(
@@ -97,8 +98,21 @@ ___,           ___,            ___,            ___,            ___,            _
 
                ___,            ___,            ___,            ___,            ___,
                ___,            ___,            ___,            ___,            ___,            ___,
-               ___,            KC_LCTL,        KC_LSFT,        KC_LALT,        ___,            ___,
-               ___,            ___,            ___,            KC_ALGR,        KC_LGUI,        ___,
-               ___,            ___,            KC_LGUI)
+               ___,            KC_LALT,        KC_LSFT,        KC_LCTL,        ___,            ___,
+               ___,            ___,            ___,            KC_ALGR,        ___,            ___,
+               ___,            ___,            KC_LGUI),
+
+[FN] = LAYOUT_LR(
+               ___,            KC_F10,         KC_F11,         KC_F12,         ___,
+___,           ___,            KC_F7,          KC_F8,          KC_F9,          ___,
+___,           KC_INS,         KC_F4,          KC_F5,          KC_F6,          KC_PSCR,
+___,           ___,            KC_F1,          KC_F2,          KC_F3,          ___,
+               ___,            ___,            ___,
+
+               ___,            ___,            ___,            ___,            ___,
+               ___,            ___,            ___,            ___,            ___,            ___,
+               ___,            KC_LALT,        KC_LSFT,        KC_LCTL,        ___,            ___,
+               ___,            ___,            ___,            KC_ALGR,        ___,            ___,
+               ___,            ___,            KC_LGUI),
 
 };
