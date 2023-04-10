@@ -49,14 +49,14 @@ DF(BASE),      KC_COLN,        ALGR_T(KC_Q),   KC_J,           KC_K,           K
 [SYM] = LAYOUT_LR(
                KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,
 KC_TAB,        KC_QUOT,        KC_COMM,        KC_DOT,         KC_DQUO,        ___,       
-KC_ESC,        KC_EXLM,        KC_MINS,        KC_PLUS,        KC_EQL,         KC_UNDS,
-___,           KC_COLN,        KC_LABK,        KC_RABK,        ___,            ___,
+KC_ESC,        KC_COLN,        KC_LABK,        KC_RABK,        KC_PLUS,        KC_UNDS,
+___,           KC_SCLN,        ___,            ___,            ___,            ___,
                ___,            ___,            KC_SPC,
 
-               KC_CIRC,        KC_AMPR,        KC_ASTR,          ___,          ___,
-               ___,            ___,            KC_LPRN,        KC_RPRN,        KC_BSLS,        ___,
-               ___,            KC_SCLN,        KC_LBRC,        KC_RBRC,        KC_QUES,        KC_ENT,
-               KC_PIPE,        ___,            KC_LCBR,        KC_RCBR,        KC_SLSH,        ___,
+               KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_PIPE,        KC_BSLS,
+               ___,            ___,            KC_LPRN,        KC_RPRN,        KC_SLSH,        KC_EQL,
+               KC_GRV,         ___,            KC_LBRC,        KC_RBRC,        KC_MINS,        KC_ENT,
+               KC_TILD,        ___,            KC_LCBR,        KC_RCBR,        KC_QUES,        ___,
                KC_BSPC,        ___,            KC_DEL),
 
 [WIN_BASE] = LAYOUT_ansi_84(
