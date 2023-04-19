@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "print.h"
 
 #define ___ KC_NO
 #define LAYOUT_LR(\
@@ -23,13 +24,14 @@ DT_PRNT, DT_UP, DT_DOWN, ___, ___, ___, ___, ___, ___, ___)
 
 // clang-format off
 enum layers{
-  BASE,
-  SYM,
-  WIN_BASE,
-  WIN_FN,
-  NAV,
-  MOUSE,
-  FN
+    BASE,
+    QWERTY,
+    WIN_BASE,
+    WIN_FN,
+    SYM,
+    NAV,
+    MOUSE,
+    FN
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -43,21 +45,23 @@ DF(BASE),      KC_COLN,        ALGR_T(KC_Q),   KC_J,           KC_K,           K
                KC_6,           KC_7,           KC_8,           KC_9,           KC_0,
                KC_F,           KC_G,           KC_C,           KC_R,           KC_L,           ___,
                KC_D,           LT(SYM,KC_H),   LALT_T(KC_T),   LSFT_T(KC_N),   LCTL_T(KC_S),   KC_ENT,
-               KC_B,           KC_M,           KC_W,           ALGR_T(KC_V),   KC_Z,           ___,
-               LT(MOUSE,KC_BSPC),MO(FN),    LGUI_T(KC_DEL)),
+               KC_B,           KC_M,           KC_W,           ALGR_T(KC_V),   KC_Z,           DF(QWERTY),
+               LT(MOUSE,KC_BSPC),MO(FN),       LGUI_T(KC_DEL)),
 
-[SYM] = LAYOUT_LR(
-               KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,
-KC_TAB,        KC_QUOT,        KC_COMM,        KC_DOT,         KC_DQUO,        ___,       
-KC_ESC,        KC_COLN,        KC_LABK,        KC_RABK,        KC_PLUS,        KC_UNDS,
-___,           KC_SCLN,        ___,            ___,            ___,            ___,
-               ___,            ___,            KC_SPC,
 
-               KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_PIPE,        KC_BSLS,
-               ___,            ___,            KC_LPRN,        KC_RPRN,        KC_SLSH,        KC_EQL,
-               KC_GRV,         ___,            KC_LBRC,        KC_RBRC,        KC_MINS,        KC_ENT,
-               KC_TILD,        ___,            KC_LCBR,        KC_RCBR,        KC_QUES,        ___,
-               KC_BSPC,        ___,            KC_DEL),
+[QWERTY] = LAYOUT_LR(
+               KC_1,           KC_2,           KC_3,           KC_4,           KC_5,
+KC_TAB,        KC_Q,        KC_W,        KC_E,         KC_R,           KC_T,
+KC_ESC,        LCTL_T(KC_A),   LSFT_T(KC_S),   LALT_T(KC_D),   LT(SYM,KC_F),   KC_G,
+DF(BASE),      KC_Z,        ALGR_T(KC_X),   KC_C,           KC_V,           KC_B,
+               KC_LGUI,        MO(NAV),        LT(NAV,KC_SPC),
+
+               KC_6,           KC_7,           KC_8,           KC_9,           KC_0,
+               KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_LBRC,
+               KC_H,           LT(SYM,KC_J),   LALT_T(KC_K),   LSFT_T(KC_L),   LCTL_T(KC_SCLN),   KC_ENT,
+               KC_N,           KC_M,           KC_COMM,           ALGR_T(KC_DOT),   KC_QUOT,           DF(QWERTY),
+               LT(MOUSE,KC_BSPC),MO(FN),       LGUI_T(KC_DEL)),
+
 
 [WIN_BASE] = LAYOUT_ansi_84(
      KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_PSCR,  KC_DEL,   RGB_MOD,
@@ -74,6 +78,20 @@ ___,           KC_SCLN,        ___,            ___,            ___,            _
      KC_TRNS,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_TRNS,
      KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  BAT_LVL,  NK_TOGG,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
      KC_TRNS,  KC_TRNS,  KC_TRNS,                                KC_TRNS,                                KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS),
+
+
+[SYM] = LAYOUT_LR(
+               KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,
+KC_TAB,        KC_QUOT,        KC_COMM,        KC_DOT,         KC_DQUO,        ___,       
+KC_ESC,        KC_COLN,        KC_LABK,        KC_RABK,        KC_PLUS,        KC_UNDS,
+___,           KC_SCLN,        ___,            ___,            ___,            ___,
+               ___,            ___,            KC_SPC,
+
+               KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_PIPE,        KC_BSLS,
+               ___,            ___,            KC_LPRN,        KC_RPRN,        KC_SLSH,        KC_EQL,
+               KC_GRV,         ___,            KC_LBRC,        KC_RBRC,        KC_MINS,        KC_ENT,
+               KC_TILD,        ___,            KC_LCBR,        KC_RCBR,        KC_QUES,        ___,
+               KC_BSPC,        ___,            KC_DEL),
 
 
 [NAV] = LAYOUT_LR(
@@ -109,10 +127,38 @@ ___,           KC_INS,         KC_F4,          KC_F5,          KC_F6,          K
 ___,           ___,            KC_F1,          KC_F2,          KC_F3,          ___,
                ___,            ___,            ___,
 
-               ___,            ___,            ___,            ___,            ___,
+               ___,            ___,            ___,            ___,            QK_BOOT,
                ___,            ___,            ___,            ___,            ___,            ___,
                ___,            KC_LALT,        KC_LSFT,        KC_LCTL,        ___,            ___,
                ___,            ___,            ___,            KC_ALGR,        ___,            ___,
                ___,            ___,            KC_LGUI),
 
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+
+    if (IS_LAYER_ON(QWERTY)) {
+#ifdef CONSOLE_ENABLE
+    uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+#endif 
+        if (keycode == KC_Q) return false;
+
+
+        if (keycode == KC_Q && record->tap.count > 0) {
+            if (record->event.pressed) {
+                add_mods(MOD_BIT(KC_ALGR));
+            }
+            else {
+                del_mods(MOD_BIT(KC_ALGR));
+            }
+        }
+    }
+    else {
+#ifdef CONSOLE_ENABLE
+    uprintf("XX: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+#endif 
+
+    }
+    return true;
+}
