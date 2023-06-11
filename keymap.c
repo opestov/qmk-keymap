@@ -76,9 +76,9 @@ xxx, xxx, KC_SPC, KC_ENT, xxx, xxx),
 
 
 [NAV] = LAYOUT_LR(
-TG(NAV),  xxx,      xxx,      xxx,      xxx,      xxx,
 xxx,      KC_PGUP,  KC_HOME,  KC_UP,    KC_END,   xxx,
 xxx,      KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT,  xxx,
+xxx,      xxx,      xxx,      xxx,      xxx,      xxx,
 xxx,      xxx,      xxx,      xxx,      xxx,      xxx,
         xxx,      xxx,      xxx,      xxx,      xxx,      xxx,
         xxx,      xxx,      xxx,      xxx,      xxx,      xxx,
@@ -88,14 +88,14 @@ xxx, xxx, xxx, xxx, xxx, xxx),
 
 
 [FN] = LAYOUT_LR(
-xxx,      xxx,      xxx,      xxx,      xxx,      xxx,
-xxx,      xxx,      xxx,      xxx,      xxx,      xxx,
+xxx,      KC_WH_U,  KC_WH_L,  KC_MS_U,  KC_WH_R,  xxx,
+xxx,      KC_WH_D,  KC_MS_L,  KC_MS_D,  KC_MS_R,  xxx,
 xxx,      KC_LCTL,  KC_LSFT,  KC_LALT,  xxx,      xxx,
 KC_LSFT,  xxx,      KC_ALGR,  xxx,      xxx,      xxx,
-        xxx,      KC_F10,   KC_F11,   KC_F12,   xxx,      xxx,
-        xxx,      KC_F7,    KC_F8,    KC_F9,    xxx,      xxx,
-        KC_INS,   KC_F4,    KC_F5,    KC_F6,    KC_PSCR,  xxx,
-        xxx,      KC_F1,    KC_F2,    KC_F3,    xxx,      xxx,
-xxx, xxx, xxx, xxx, xxx, xxx),
+        xxx,      KC_F9,    KC_F10,   KC_F11,   KC_F12,   xxx,
+        xxx,      KC_F5,    KC_F6,    KC_F7,    KC_F8,    xxx,
+        KC_INS,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_PSCR,
+        xxx,      xxx,      xxx,      xxx,      xxx,      xxx,
+xxx, KC_BTN1, KC_BTN2, xxx, xxx, xxx),
 
 };
