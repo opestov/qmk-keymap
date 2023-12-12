@@ -31,18 +31,18 @@ enum custom_keycodes {
     L11,L12,L13,L14,L15,L16,\
     L21,L22,L23,L24,L25,L26,\
     L31,L32,L33,L34,L35,\
-    LT1,LT2,LT3,\
+    LT1,LT2,\
     R11,R12,R13,R14,R15,R16,\
     R21,R22,R23,R24,R25,R26,\
     R31,R32,R33,R34,R35,\
-    RT1,RT2,RT3)\
+    RT1,RT2)\
 LAYOUT_ansi_84(\
-xxx,L11,L12,L13,L14,L15,L16,R11,R12,R13,R14,R15,R16,xxx,xxx,xxx,\
-xxx,L21,L22,L23,L24,L25,L26,R21,R22,R23,R24,R25,R26,xxx,xxx,\
-TG(MOUSE),L31,L32,L33,L34,L35,xxx,R31,R32,R33,R34,R35,xxx,xxx,xxx,\
-xxx,xxx,xxx,xxx,LT1,xxx,xxx,xxx,RT1,xxx,xxx,xxx,xxx,xxx,\
-xxx,xxx,xxx,LT2,LT3,xxx,xxx,RT2,RT3,xxx,xxx,xxx,xxx,xxx,\
-xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx)
+L11,L12,L13,L14,L15,L16,xxx,xxx,R11,R12,R13,R14,R15,R16,xxx,xxx,\
+L21,L22,L23,L24,L25,L26,KC_BTN2,KC_MS_U,R21,R22,R23,R24,R25,R26,xxx,\
+L31,L32,L33,L34,L35,KC_MS_L,KC_MS_D,KC_MS_R,R31,R32,R33,R34,R35,xxx,xxx,\
+xxx,xxx,xxx,KC_LGUI,KC_BTN2,xxx,xxx,KC_WH_D,KC_WH_U,KC_LGUI,xxx,xxx,xxx,xxx,\
+xxx,xxx,LT1,LT2,xxx,xxx,xxx,xxx,RT1,RT2,xxx,xxx,xxx,xxx,\
+xxx,xxx,xxx,KC_BTN1,xxx,xxx,xxx,xxx,xxx,xxx)
 
 enum layers{
     WIN_BASE,
@@ -51,7 +51,8 @@ enum layers{
     BASER,
     SYM,
     SYMR,
-    DIGITS,
+    DIG,
+    DIGR,
     FN,
     NAV,
     MOUSE
@@ -78,81 +79,91 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,
     KC_DEL,         LCTL_T(KC_A),   LSFT_T(KC_S),   LALT_T(KC_D),   LT(SYM,KC_F),   KC_G,
                     KC_Z,           ALGR_T(KC_X),   KC_C,           KC_V,           KC_B,
-    KC_LGUI, LT(FN, KBD_EN), LT(NAV, KC_SPC),
+    LT(FN, KBD_EN), LT(NAV, KC_SPC),
     KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_LBRC,
     KC_H,           LT(SYM,KC_J),   LALT_T(KC_K),   LSFT_T(KC_L),   LCTL_T(KC_SCLN),KC_ENT,
     KC_N,           KC_M,           KC_COMM,        ALGR_T(KC_DOT), KC_SLSH,
-    KC_LGUI, LT(DIGITS, KC_BSPC), KBD_RU),
+    LT(DIG, KC_BSPC), KBD_RU),
 
 [BASER] = LAYOUT_LR(
     _______,        _______,        _______,        _______,        _______,        _______,
     _______,        _______,        _______,        _______,        LT(SYMR,KC_F),  _______,
                     _______,        _______,        _______,        _______,        _______,
-    _______, _______, _______,
+    _______, _______,
     _______,        _______,        _______,        _______,        _______,        _______,
     _______,        LT(SYMR,KC_J),  _______,        _______,        _______,        _______,
     _______,        _______,        _______,        _______,        KC_QUOT,
-    _______, _______, _______),
+    LT(DIGR, KC_BSPC), _______),
 
 [SYM] = LAYOUT_LR(
-    KC_TILD,        KC_EXLM,        KC_COMM,        KC_DOT,         KC_DQUO,        xxx,
+    KC_TILD,        KC_QUOT,        KC_COMM,        KC_DOT,         KC_DQUO,        xxx,
     KC_GRV,         KC_PLUS,        KC_MINS,        KC_ASTR,        KC_SLSH,        KC_UNDS,
-                    KC_SCLN,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,
-    xxx, xxx, xxx,
+                    KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,
+    xxx, xxx,
     KC_CIRC,        KC_AMPR,        KC_LPRN,        KC_RPRN,        KC_BSLS,        KC_PIPE,
-    KC_LCBR,        KC_EQL,         KC_LBRC,        KC_RBRC,        KC_COLN,        KC_QUOT,
+    KC_LCBR,        KC_EQL,         KC_LBRC,        KC_RBRC,        KC_COLN,        KC_SCLN,
     KC_RCBR,        xxx,            KC_LABK,        KC_RABK,        KC_QUES,
-    xxx, xxx, xxx),
+    xxx, xxx),
 
 [SYMR] = LAYOUT_LR(
-    RU_TILD,        KC_EXLM,        RU_COMM,        RU_DOT,         RU_DQUO,        KC_GRV,
+    RU_TILD,        RU_QUOT,        RU_COMM,        RU_DOT,         RU_DQUO,        KC_GRV,
     RU_GRV,         KC_PLUS,        KC_MINS,        KC_ASTR,        RU_SLSH,        KC_UNDS,
-                    RU_SCLN,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,
-    xxx, xxx, xxx,
+                    KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,
+    xxx, xxx,
     KC_CIRC,        KC_AMPR,        KC_LPRN,        KC_RPRN,        KC_BSLS,        RU_PIPE,
-    RU_LCBR,        KC_EQL,         RU_LBRC,        RU_RBRC,        RU_COLN,        RU_QUOT,
+    RU_LCBR,        KC_EQL,         RU_LBRC,        RU_RBRC,        RU_COLN,        RU_SCLN,
     RU_RCBR,        KC_RBRC,        RU_LABK,        RU_RABK,        RU_QUES,
-    xxx, xxx, xxx),
+    xxx, xxx),
 
-[DIGITS] = LAYOUT_LR(
-    xxx,            xxx,            xxx,            xxx,            xxx,            xxx,
-    xxx,            xxx,            xxx,            xxx,            xxx,            xxx,
-                    xxx,            xxx,            xxx,            xxx,            xxx,
-    xxx, xxx, xxx,
+[DIG] = LAYOUT_LR(
+    KC_TILD,        KC_QUOT,        KC_COMM,        KC_DOT,         KC_DQUO,        xxx,
+    KC_GRV,         KC_PLUS,        KC_MINS,        KC_ASTR,        KC_SLSH,        KC_UNDS,
+                    KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,
+    xxx, xxx,
     KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           xxx,
     xxx,            KC_1,           KC_2,           KC_3,           KC_4,           KC_5,
     xxx,            xxx,            xxx,            xxx,            xxx,
-    xxx, xxx, xxx),
+    xxx, xxx),
+
+[DIGR] = LAYOUT_LR(
+    RU_TILD,        RU_QUOT,        RU_COMM,        RU_DOT,         RU_DQUO,        KC_GRV,
+    RU_GRV,         KC_PLUS,        KC_MINS,        KC_ASTR,        RU_SLSH,        KC_UNDS,
+                    KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,
+    xxx, xxx,
+    KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           xxx,
+    xxx,            KC_1,           KC_2,           KC_3,           KC_4,           KC_5,
+    xxx,            xxx,            xxx,            xxx,            xxx,
+    xxx, xxx),
 
 [FN] = LAYOUT_LR(
     xxx,            KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,
     KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
                     xxx,            xxx,            xxx,            xxx,            KC_F12,
-    xxx, xxx, xxx,
+    xxx, xxx,
     xxx,            xxx,            xxx,            xxx,            xxx,            xxx,
     xxx,            xxx,            xxx,            xxx,            xxx,            xxx,
     xxx,            xxx,            xxx,            xxx,            xxx,
-    xxx, xxx, xxx),
+    xxx, xxx),
 
 [NAV] = LAYOUT_LR(
     KC_ESC,         KC_VOLU,        KC_HOME,        KC_UP,          KC_END,         KC_PSCR,
     KC_CAPS,        KC_VOLD,        KC_LEFT,        KC_DOWN,        KC_RGHT,        KC_PGUP,
                     KC_MUTE,        xxx,            KC_INS,         xxx,            KC_PGDN,
-    xxx, xxx, xxx,
+    xxx, xxx,
     xxx,            xxx,            xxx,            xxx,            xxx,            xxx,
     xxx,            xxx,           _______,         _______,        _______,        xxx,
     xxx,            xxx,            xxx,            xxx,            xxx,
-    xxx, xxx, xxx),
+    xxx, xxx),
 
 [MOUSE] = LAYOUT_LR(
     _______,        xxx,            xxx,            KC_MS_U,        xxx,            xxx,
     _______,        KC_BTN2,        KC_MS_L,        KC_MS_D,        KC_MS_R,        KC_WH_U,
                     _______,        _______,        _______,        _______,        KC_WH_D,
-    _______, _______, KC_BTN1,
+    _______, KC_BTN1,
     xxx,            xxx,           xxx,             xxx,            xxx,            xxx,
-    xxx,            xxx,           _______,         _______,        _______,        xxx,
+    xxx,            xxx,           _______,         _______,        _______,        _______,
     xxx,            xxx,           xxx,             xxx,            xxx,
-    _______, _______, _______),
+    _______, _______),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
