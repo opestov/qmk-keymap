@@ -39,9 +39,9 @@ enum custom_keycodes {
 LAYOUT_ansi_84(\
 L11,L12,L13,L14,L15,L16,KC_HOME,KC_UP,KC_END,R11,R12,R13,R14,R15,R16,KC_DEL,\
 L21,L22,L23,L24,L25,L26,KC_LEFT,KC_DOWN,KC_RGHT,R21,R22,R23,R24,R25,R26,\
-L31,L32,L33,L34,L35,KC_PGUP,KC_MS_U,KC_BTN2,KC_PGDN,R31,R32,R33,R34,R35,xxx,\
-xxx,xxx,xxx,KC_LGUI,xxx,KC_MS_L,KC_MS_D,KC_MS_R,xxx,xxx,KC_LGUI,xxx,xxx,xxx,\
-xxx,xxx,LT1,LT2,KC_WH_U,xxx,xxx,KC_WH_D,xxx,RT1,RT2,xxx,xxx,xxx,\
+L31,L32,L33,L34,L35,xxx,KC_MS_U,KC_BTN2,xxx,R31,R32,R33,R34,R35,KC_PGUP,\
+xxx,xxx,xxx,KC_LGUI,KC_WH_U,KC_MS_L,KC_MS_D,KC_MS_R,KC_WH_D,xxx,KC_LGUI,xxx,xxx,KC_PGDN,\
+xxx,xxx,LT1,LT2,xxx,xxx,xxx,xxx,xxx,RT1,RT2,xxx,xxx,xxx,\
 xxx,xxx,xxx,KC_BTN1,xxx,xxx,xxx,xxx,xxx,xxx)
 
 enum layers{
