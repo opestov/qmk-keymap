@@ -41,8 +41,8 @@ L11,L12,L13,L14,L15,L16,xxx,xxx,R11,R12,R13,R14,R15,R16,KC_DEL,xxx,\
 L21,L22,L23,L24,L25,L26,xxx,xxx,R21,R22,R23,R24,R25,R26,xxx,\
 L31,L32,L33,L34,L35,LNG,xxx,xxx,R31,R32,R33,R34,R35,xxx,KC_PGUP,\
 xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,KC_PGDN,\
-xxx,xxx,LGUI_T(KC_HOME),KC_LEFT,LALT_T(KC_SPC),KC_UP,KC_DOWN,LALT_T(KC_BSPC),KC_RGHT,LGUI_T(KC_END),xxx,KC_MS_U,KC_MS_R,KC_WH_U,\
-xxx,xxx,xxx,LRT,xxx,KC_BTN1,KC_MS_L,KC_MS_D,KC_BTN2,KC_WH_D)
+xxx,xxx,LGUI_T(KC_HOME),KC_LEFT,LALT_T(KC_SPC),KC_UP,KC_DOWN,LALT_T(KC_BSPC),KC_RGHT,LGUI_T(KC_END),xxx,KC_MS_U,KC_BTN2,KC_WH_U,\
+xxx,xxx,xxx,LRT,xxx,KC_BTN1,KC_MS_L,KC_MS_D,KC_MS_R,KC_WH_D)
 
 enum layers{
     WIN_BASE,
@@ -92,18 +92,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [SYM] = LAYOUT_LR(
     KC_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,
     KC_GRV,         KC_QUOT,        KC_COMM,        KC_DOT,         KC_DQUO,        xxx,
-                    KC_SLSH,        KC_SCLN,        KC_COLN,        KC_BSLS,        KC_UNDS,
+                    KC_SCLN,        KC_PIPE,        KC_BSLS,        KC_SLSH,        KC_UNDS,
     KC_CIRC,        KC_AMPR,        KC_LPRN,        KC_RPRN,        KC_MINS,        KC_EQL,
-    KC_LCBR,        KC_ASTR,        KC_LBRC,        KC_RBRC,        KC_PLUS,        KC_PIPE,
+    KC_LCBR,        KC_ASTR,        KC_LBRC,        KC_RBRC,        KC_COLN,        KC_PLUS,
     KC_RCBR,        xxx,            KC_LABK,        KC_RABK,        KC_QUES,
     xxx, xxx),
 
 [SYMR] = LAYOUT_LR(
     RU_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,
     RU_GRV,         RU_QUOT,        RU_COMM,        RU_DOT,         RU_DQUO,        KC_GRV,
-                    RU_SLSH,        RU_SCLN,        RU_COLN,        KC_BSLS,        KC_UNDS,
+                    RU_SCLN,        RU_PIPE,        KC_BSLS,        RU_SLSH,        KC_UNDS,
     KC_CIRC,        KC_AMPR,        KC_LPRN,        KC_RPRN,        KC_MINS,        KC_EQL,
-    RU_LCBR,        KC_ASTR,        RU_LBRC,        RU_RBRC,        KC_PLUS,         RU_PIPE,
+    RU_LCBR,        KC_ASTR,        RU_LBRC,        RU_RBRC,        RU_COLN,        KC_PLUS,
     RU_RCBR,        KC_RBRC,        RU_LABK,        RU_RABK,        RU_QUES,
     xxx, xxx),
 
