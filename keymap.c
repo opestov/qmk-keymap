@@ -40,7 +40,7 @@ LAYOUT_ansi_84(\
 L11,L12,L13,L14,L15,L16,xxx,xxx,R11,R12,R13,R14,R15,R16,KC_DEL,xxx,\
 L21,L22,L23,L24,L25,L26,xxx,xxx,R21,R22,R23,R24,R25,R26,xxx,\
 L31,L32,L33,L34,L35,LNG,xxx,xxx,R31,R32,R33,R34,R35,xxx,KC_PGUP,\
-xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,KC_PGDN,\
+KC_1,KC_2,KC_3,KC_4,KC_5,xxx,xxx,xxx,KC_6,KC_7,KC_8,KC_9,KC_0,KC_PGDN,\
 xxx,xxx,LGUI_T(KC_HOME),KC_LEFT,LALT_T(KC_SPC),KC_UP,KC_DOWN,LALT_T(KC_BSPC),KC_RGHT,LGUI_T(KC_END),xxx,KC_MS_U,KC_BTN2,KC_WH_U,\
 xxx,xxx,xxx,LRT,xxx,KC_BTN1,KC_MS_L,KC_MS_D,KC_MS_R,KC_WH_D)
 
@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     KC_MUTE,        KC_VOLD,        KC_VOLU,        KC_PSCR,        KC_INS,
     KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           xxx,
     KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
-    xxx,            xxx,            xxx,            xxx,            xxx,
+    HYPR(KC_1),     HYPR(KC_2),     HYPR(KC_3),     HYPR(KC_4),     HYPR(KC_5),
     xxx, xxx),
 };
 

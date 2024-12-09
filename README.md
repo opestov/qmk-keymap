@@ -1,6 +1,6 @@
 # Keymap for the Keychron K3 Pro keyboard
 
-[Setup](https://opestov.github.io/k3/index.html)  QMK environment, then
+[Setup](https://opestov.github.io/k3/index.html) QMK environment, then
 
 ```
 cd ~
