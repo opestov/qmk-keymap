@@ -86,20 +86,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        _______,        KC_COMM,        KC_DOT,         _______),
 
 [SYM] = LAYOUT_LR(
-    KC_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,
-    KC_GRV,         KC_QUOT,        KC_COMM,        KC_DOT,         KC_DQUO,        xxx,
-                    KC_SCLN,        KC_PIPE,        KC_BSLS,        KC_SLSH,        KC_UNDS,
-    KC_CIRC,        KC_AMPR,        KC_LPRN,        KC_RPRN,        KC_MINS,        KC_EQL,
-    KC_LCBR,        KC_ASTR,        KC_LBRC,        KC_RBRC,        KC_COLN,        KC_PLUS,
-    KC_RCBR,        xxx,            KC_LABK,        KC_RABK,        KC_QUES),
+    KC_TILD,        KC_PIPE,        KC_LABK,        KC_RABK,        KC_DLR,         xxx,
+    KC_GRV,         KC_EXLM,        KC_MINS,        KC_PLUS,        KC_EQL,         KC_UNDS,
+                    KC_COLN,        KC_SLSH,        KC_ASTR,        KC_BSLS,        KC_SCLN,
+    KC_CIRC,        KC_HASH,        KC_LPRN,        KC_RPRN,        KC_AMPR,        KC_PERC,
+    KC_LCBR,        KC_DQUO,        KC_COMM,        KC_DOT,         KC_QUES,        KC_QUOT,
+    KC_RCBR,        xxx,            KC_LBRC,        KC_RBRC,        KC_AT),
 
 [SYMR] = LAYOUT_LR(
-    RU_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,
-    RU_GRV,         RU_QUOT,        RU_COMM,        RU_DOT,         RU_DQUO,        KC_GRV,
-                    RU_SCLN,        RU_PIPE,        KC_BSLS,        RU_SLSH,        KC_UNDS,
-    KC_CIRC,        KC_AMPR,        KC_LPRN,        KC_RPRN,        KC_MINS,        KC_EQL,
-    RU_LCBR,        KC_ASTR,        RU_LBRC,        RU_RBRC,        RU_COLN,        KC_PLUS,
-    RU_RCBR,        KC_RBRC,        RU_LABK,        RU_RABK,        RU_QUES),
+    RU_TILD,        RU_PIPE,        RU_LABK,        RU_RABK,        KC_DLR,         KC_GRV,
+    RU_GRV,         KC_EXLM,        KC_MINS,        KC_PLUS,        KC_EQL,         KC_UNDS,
+                    RU_COLN,        RU_SLSH,        KC_ASTR,        KC_BSLS,        RU_SCLN,
+    KC_CIRC,        KC_HASH,        KC_LPRN,        KC_RPRN,        KC_AMPR,        KC_PERC,
+    RU_LCBR,        RU_DQUO,        RU_COMM,        RU_DOT,         RU_QUES,        RU_QUOT,
+    RU_RCBR,        KC_RBRC,        RU_LBRC,        RU_RBRC,        KC_AT),
 
 [DIG] = LAYOUT_LR(
     KC_F12,         KC_1,           KC_2,           KC_3,           KC_4,           KC_5,
