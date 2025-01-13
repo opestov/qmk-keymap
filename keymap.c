@@ -33,14 +33,16 @@ enum custom_keycodes {
     L31,L32,L33,L34,L35,\
     R11,R12,R13,R14,R15,R16,\
     R21,R22,R23,R24,R25,R26,\
-    R31,R32,R33,R34,R35)\
+    R31,R32,R33,R34,R35,\
+    TL1,TL2,TL3,TR1,TR2,TR3,\
+    MU,M2,WU,M1,ML,MD,MR,WD)\
 LAYOUT_ansi_84(\
 L11,L12,L13,L14,L15,L16,xxx,xxx,R11,R12,R13,R14,R15,R16,KBD_TOGGLE,xxx,\
 L21,L22,L23,L24,L25,L26,xxx,xxx,R21,R22,R23,R24,R25,R26,xxx,\
-L31,L32,L33,L34,L35,KC_ESC,xxx,KC_DEL,R31,R32,R33,R34,R35,xxx,KC_PGUP,\
-xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,KC_PGDN,\
-xxx,xxx,xxx,LGUI_T(KC_HOME),KC_LEFT,KC_UP,KC_DOWN,KC_RGHT,LGUI_T(KC_END),xxx,xxx,KC_MS_U,KC_BTN2,KC_WH_U,\
-xxx,xxx,xxx,LT(DIG,KC_SPC),xxx,KC_BTN1,KC_MS_L,KC_MS_D,KC_MS_R,KC_WH_D)
+L31,L32,L33,L34,L35,xxx,xxx,xxx,R31,R32,R33,R34,R35,xxx,KC_PGUP,\
+KC_CAPS,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,KC_PGDN,\
+xxx,xxx,xxx,TL1,TL2,TL3,TR1,TR2,TR3,xxx,xxx,MU,M2,WU,\
+xxx,xxx,xxx,LT(DIG,KC_SPC),xxx,M1,ML,MD,MR,WD)
 
 enum layers{
     WIN_BASE,
@@ -69,13 +71,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  BAT_LVL,  NK_TOGG,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
     KC_TRNS,  KC_TRNS,  KC_TRNS,                                KC_TRNS,                                KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS),
 
+
 [BASE] = LAYOUT_LR(
-    KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,
-    KC_BSPC,        LCTL_T(KC_A),   LSFT_T(KC_S),   KC_D,           LT(SYM,KC_F),   KC_G,
+    KC_BSPC,        KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,
+    KC_TAB,         LCTL_T(KC_A),   LSFT_T(KC_S),   KC_D,           LT(SYM,KC_F),   KC_G,
                     LALT_T(KC_Z),   KC_X,           KC_C,           KC_V,           KC_B,
-    KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_LBRC,
-    KC_H,           LT(SYM,KC_J),   KC_K,           LSFT_T(KC_L),   LCTL_T(KC_SCLN),KC_ENT,
-    KC_N,           KC_M,           KC_F18,         KC_F19,         LALT_T(KC_F20)),
+    KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_F20,
+    KC_H,           LT(SYM,KC_J),   KC_K,           LSFT_T(KC_L),   LCTL_T(KC_F20), KC_ENT,
+    KC_N,           KC_M,           LGUI(KC_1),     LGUI(KC_2),     LALT_T(KC_F20),
+    LGUI_T(KC_ESC), KC_LEFT,        xxx,            xxx,            KC_RGHT,        LGUI_T(KC_DEL),
+    KC_MS_U,KC_BTN2,KC_WH_U, KC_BTN1,KC_MS_L,KC_MS_D,KC_MS_R,KC_WH_D),
+
 
 [BASER] = LAYOUT_LR(
     _______,        _______,        _______,        _______,        _______,        _______,
@@ -83,7 +89,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     _______,        _______,        _______,        _______,        _______,
     _______,        _______,        _______,        _______,        _______,        _______,
     _______,        LT(SYMR,KC_J),  _______,        _______,        LCTL_T(KC_SCLN),_______,
-    _______,        _______,        KC_COMM,        KC_DOT,         LALT_T(KC_QUOT)),
+    _______,        _______,        KC_COMM,        KC_DOT,         LALT_T(KC_QUOT),
+    _______,        _______,        _______,        _______,        _______,        _______,
+    _______,_______,_______, _______,_______,_______,_______,_______),
+
 
 [SYM] = LAYOUT_LR(
     KC_TILD,        KC_PIPE,        KC_LABK,        KC_RABK,        KC_DLR,         xxx,
@@ -91,7 +100,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     KC_COLN,        KC_SLSH,        KC_ASTR,        KC_BSLS,        KC_SCLN,
     KC_CIRC,        KC_HASH,        KC_LPRN,        KC_RPRN,        KC_AMPR,        KC_PERC,
     KC_LCBR,        KC_DQUO,        KC_COMM,        KC_DOT,         KC_QUES,        KC_QUOT,
-    KC_RCBR,        xxx,            KC_LBRC,        KC_RBRC,        KC_AT),
+    KC_RCBR,        xxx,            KC_LBRC,        KC_RBRC,        KC_AT,
+    _______,        _______,        _______,        _______,        _______,        _______,
+    _______,_______,_______, _______,_______,_______,_______,_______),
+
 
 [SYMR] = LAYOUT_LR(
     RU_TILD,        RU_PIPE,        RU_LABK,        RU_RABK,        KC_DLR,         KC_GRV,
@@ -99,16 +111,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     RU_COLN,        RU_SLSH,        KC_ASTR,        KC_BSLS,        RU_SCLN,
     KC_CIRC,        KC_HASH,        KC_LPRN,        KC_RPRN,        KC_AMPR,        KC_PERC,
     RU_LCBR,        RU_DQUO,        RU_COMM,        RU_DOT,         RU_QUES,        RU_QUOT,
-    RU_RCBR,        KC_RBRC,        RU_LBRC,        RU_RBRC,        KC_AT),
+    RU_RCBR,        KC_RBRC,        RU_LBRC,        RU_RBRC,        KC_AT,
+    _______,        _______,        _______,        _______,        _______,        _______,
+    _______,_______,_______, _______,_______,_______,_______,_______),
+
 
 [DIG] = LAYOUT_LR(
-    KC_F12,         KC_1,           KC_2,           KC_3,           KC_4,           KC_5,
-    KC_CAPS,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,
-                    KC_MUTE,        KC_VOLD,        KC_VOLU,        KC_PSCR,        KC_INS,
+    xxx,            KC_1,           KC_2,           KC_3,           KC_4,           KC_5,
+    KC_F11,         KC_LCTL,        KC_LSFT,        xxx,            xxx,            xxx,
+                    KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,
     KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           xxx,
-    KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
-    KC_F16,         KC_F17,         KC_F18,         KC_F19,         KC_F20),
+    xxx,            KC_DOWN,        KC_UP,          KC_LSFT,        KC_LCTL,        KC_F12,
+    KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,
+    _______,        KC_HOME,        _______,        _______,        KC_END,         _______,
+    KC_VOLU,KC_MUTE,_______, KC_PSCR,KC_INS,KC_VOLD,_______,_______),
+
 };
+
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
