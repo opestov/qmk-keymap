@@ -37,7 +37,7 @@ enum custom_keycodes {
     TL1,TL2,TL3,TR1,TR2,TR3,\
     MU,M2,WU,M1,ML,MD,MR,WD)\
 LAYOUT_ansi_84(\
-L11,L12,L13,L14,L15,L16,xxx,xxx,R11,R12,R13,R14,R15,R16,KBD_TOGGLE,xxx,\
+L11,L12,L13,L14,L15,L16,xxx,xxx,R11,R12,R13,R14,R15,R16,xxx,xxx,\
 L21,L22,L23,L24,L25,L26,xxx,xxx,R21,R22,R23,R24,R25,R26,xxx,\
 L31,L32,L33,L34,L35,xxx,xxx,xxx,R31,R32,R33,R34,R35,xxx,KC_PGUP,\
 KC_CAPS,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,KC_PGDN,\
@@ -121,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_F11,         KC_LCTL,        KC_LSFT,        xxx,            xxx,            xxx,
                     KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,
     KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           xxx,
-    xxx,            KC_DOWN,        KC_UP,          KC_LSFT,        KC_LCTL,        KC_F12,
+    KBD_TOGGLE,     KC_DOWN,        KC_UP,          KC_LSFT,        KC_LCTL,        KC_F12,
     KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,
     _______,        KC_HOME,        _______,        _______,        KC_END,         _______,
     KC_VOLU,KC_MUTE,_______, KC_PSCR,KC_INS,KC_VOLD,_______,_______),
