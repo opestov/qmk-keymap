@@ -75,11 +75,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_LR(
     KC_BSPC,        KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,
     KC_TAB,         LCTL_T(KC_A),   LSFT_T(KC_S),   KC_D,           LT(SYM,KC_F),   KC_G,
-                    LALT_T(KC_Z),   KC_X,           KC_C,           KC_V,           KC_B,
+                    LGUI_T(KC_Z),   KC_X,           KC_C,           KC_V,           KC_B,
     KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_F20,
     KC_H,           LT(SYM,KC_J),   KC_K,           LSFT_T(KC_L),   LCTL_T(KC_F20), KC_ENT,
-    KC_N,           KC_M,           LGUI(KC_1),     LGUI(KC_2),     LALT_T(KC_F20),
-    LGUI_T(KC_ESC), KC_LEFT,        xxx,            xxx,            KC_RGHT,        LGUI_T(KC_DEL),
+    KC_N,           KC_M,           LGUI(KC_1),     LGUI(KC_2),     LGUI_T(KC_F20),
+    LALT_T(KC_ESC), KC_LEFT,        xxx,            xxx,            KC_RGHT,        LALT_T(KC_DEL),
     KC_MS_U,KC_BTN2,KC_WH_U, KC_BTN1,KC_MS_L,KC_MS_D,KC_MS_R,KC_WH_D),
 
 
@@ -87,9 +87,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        _______,        _______,        _______,        _______,        _______,
     _______,        _______,        _______,        _______,        LT(SYMR,KC_F),  _______,
                     _______,        _______,        _______,        _______,        _______,
-    _______,        _______,        _______,        _______,        _______,        _______,
+    _______,        _______,        _______,        _______,        _______,        KC_LBRC,
     _______,        LT(SYMR,KC_J),  _______,        _______,        LCTL_T(KC_SCLN),_______,
-    _______,        _______,        KC_COMM,        KC_DOT,         LALT_T(KC_QUOT),
+    _______,        _______,        KC_COMM,        KC_DOT,         LGUI_T(KC_QUOT),
     _______,        _______,        _______,        _______,        _______,        _______,
     _______,_______,_______, _______,_______,_______,_______,_______),
 
@@ -118,10 +118,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [DIG] = LAYOUT_LR(
     xxx,            KC_1,           KC_2,           KC_3,           KC_4,           KC_5,
-    KC_F11,         KC_LCTL,        KC_LSFT,        xxx,            xxx,            xxx,
+    KC_F12,         KC_LCTL,        KC_LSFT,        xxx,            xxx,            xxx,
                     KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,
     KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           xxx,
-    KBD_TOGGLE,     KC_DOWN,        KC_UP,          KC_LSFT,        KC_LCTL,        KC_F12,
+    KBD_TOGGLE,     KC_DOWN,        KC_UP,          KC_LSFT,        KC_LCTL,        KC_F11,
     KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,
     _______,        KC_HOME,        _______,        _______,        KC_END,         _______,
     KC_VOLU,KC_MUTE,_______, KC_PSCR,KC_INS,KC_VOLD,_______,_______),
