@@ -6,6 +6,9 @@ enum custom_keycodes {
   KBD_TOGGLE = SAFE_RANGE,
 };
 
+#define NUM_WORD_IDLE_TIMEOUT 5000
+
+
 // OS is expected to have a custom Russian layout where:
 // - Shift+digit is the same as on the English layout;
 // - following symbols are defined on the ALGR layer
@@ -49,6 +52,7 @@ enum layers{
     WIN_FN,
     BASE,
     BASER,
+    NUM_WORD,
     SYM,
     SYMR,
     DIG,
@@ -76,9 +80,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_BSPC,        KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,
     KC_TAB,         LCTL_T(KC_A),   LSFT_T(KC_S),   KC_D,           LT(SYM,KC_F),   KC_G,
                     LGUI_T(KC_Z),   KC_X,           KC_C,           KC_V,           KC_B,
-    KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_F21,
-    KC_H,           LT(SYM,KC_J),   KC_K,           LSFT_T(KC_L),   LCTL_T(KC_F22), KC_ENT,
-    KC_N,           KC_M,           LGUI(KC_1),     LCTL(KC_L),     LGUI_T(KC_F23),
+    KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           TG(NUM_WORD),
+    KC_H,           LT(SYM,KC_J),   KC_K,           LSFT_T(KC_L),   KC_LCTL,        KC_ENT,
+    KC_N,           KC_M,           LGUI(KC_1),     LCTL(KC_L),     KC_LGUI,
     LALT_T(KC_ESC), KC_LEFT,        KC_RGHT,        LALT_T(KC_DEL),
     KC_MS_U,KC_BTN2,KC_WH_U, KC_BTN1,KC_MS_L,KC_MS_D,KC_MS_R,KC_WH_D),
 
@@ -90,6 +94,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        _______,        _______,        _______,        _______,        KC_LBRC,
     _______,        LT(SYMR,KC_J),  _______,        _______,        LCTL_T(KC_SCLN),_______,
     _______,        _______,        KC_COMM,        KC_DOT,         LGUI_T(KC_QUOT),
+    _______,        _______,        _______,        _______,
+    _______,_______,_______, _______,_______,_______,_______,_______),
+
+
+[NUM_WORD] = LAYOUT_LR(
+    _______,        KC_1,           KC_2,           KC_3,           KC_4,           KC_5,
+    _______,        _______,        _______,        _______,        _______,        _______,
+                    _______,        _______,        _______,        _______,        _______,
+    KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           _______,
+    _______,        _______,        _______,        _______,        _______,        _______,
+    _______,        _______,        _______,        _______,        _______,
     _______,        _______,        _______,        _______,
     _______,_______,_______, _______,_______,_______,_______,_______),
 
@@ -125,11 +140,72 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,
     _______,        KC_HOME,        KC_END,         _______,
     KC_VOLU,KC_MUTE,_______, KC_PSCR,KC_INS,KC_VOLD,_______,_______), 
-
 };
 
 
+#if NUM_WORD_IDLE_TIMEOUT > 0
+static uint16_t idle_timer = 0;
+void num_word_task(void) {
+    if (IS_LAYER_ON(NUM_WORD) && timer_expired(timer_read(), idle_timer)) {
+        layer_off(NUM_WORD);
+    }
+}
+#endif  // NUM_WORD_IDLE_TIMEOUT > 0
+
+void housekeeping_task_user(void) {
+#if NUM_WORD_IDLE_TIMEOUT > 0
+    num_word_task();
+#endif  // NUM_WORD_IDLE_TIMEOUT > 0
+}
+
+
+static bool turn_num_word_off(uint16_t keycode, keyrecord_t* record) {
+    if (!record->event.pressed || IS_LAYER_OFF(NUM_WORD))
+        return false;
+
+    // based on getreuer/qmk-keymap/main/features/caps_word.c
+    switch (keycode) {
+        case QK_MOMENTARY ... QK_MOMENTARY_MAX:
+        case QK_TO ... QK_TO_MAX:
+        case QK_TOGGLE_LAYER ... QK_TOGGLE_LAYER_MAX:
+        case QK_LAYER_TAP_TOGGLE ... QK_LAYER_TAP_TOGGLE_MAX:
+        case QK_ONE_SHOT_LAYER ... QK_ONE_SHOT_LAYER_MAX:
+        case KC_RALT:
+        case OSM(MOD_RALT):
+            return false;
+#ifndef NO_ACTION_TAPPING
+        case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+            if (record->tap.count == 0)
+                return false;
+            keycode = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
+            break;
+#endif  // NO_ACTION_TAPPING
+#ifndef NO_ACTION_LAYER
+        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+            if (record->tap.count == 0)
+              return false;
+            keycode = QK_LAYER_TAP_GET_TAP_KEYCODE(keycode);
+            break;
+#endif  // NO_ACTION_LAYER
+    }
+
+    if (keycode == KC_DOT || (keycode >= KC_1 && keycode <= KC_0))
+        return false;
+    return true;
+}
+
+
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+#if NUM_WORD_IDLE_TIMEOUT > 0
+    if (record->event.pressed && IS_QK_TOGGLE_LAYER(keycode) && QK_TOGGLE_LAYER_GET_LAYER(keycode) == (NUM_WORD))
+        idle_timer = record->event.time + NUM_WORD_IDLE_TIMEOUT;
+    if (record->event.pressed && IS_LAYER_ON(NUM_WORD) && (keycode) >= KC_1 && (keycode) <= KC_9)
+        idle_timer = record->event.time + NUM_WORD_IDLE_TIMEOUT;
+#endif  // NUM_WORD_IDLE_TIMEOUT > 0
+
+    if (turn_num_word_off(keycode, record))
+        layer_off(NUM_WORD);
+
     switch (keycode) {
     case KBD_TOGGLE:
         if (record->event.pressed) {
@@ -143,4 +219,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         return false;
     }
     return true;
+}
+
+
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    if (IS_LAYER_ON(NUM_WORD)) {
+        for (uint8_t i = 1; i < 13; i++)
+            rgb_matrix_set_color(i, RGB_WHITE);
+    }
+    return false;
 }
