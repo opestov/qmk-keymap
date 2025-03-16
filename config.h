@@ -1,7 +1,6 @@
 #pragma once
 
 #define TAPPING_TERM 180
-#define IGNORE_MOD_TAP_INTERRUPT
 #define PERMISSIVE_HOLD
 
 #define MOUSEKEY_DELAY          0
