@@ -45,7 +45,7 @@ L21,L22,L23,L24,L25,L26,xxx,xxx,R21,R22,R23,R24,R25,R26,xxx,\
 L31,L32,L33,L34,L35,xxx,xxx,xxx,R31,R32,R33,R34,R35,xxx,KC_PGUP,\
 KC_CAPS,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,KC_PGDN,\
 xxx,xxx,xxx,TL1,TL2,xxx,xxx,TR1,TR2,xxx,xxx,MU,M2,WU,\
-xxx,xxx,xxx,LT(DIG,KC_SPC),xxx,M1,ML,MD,MR,WD)
+xxx,xxx,xxx,LT(NAV,KC_SPC),xxx,M1,ML,MD,MR,WD)
 
 enum layers{
     WIN_BASE,
@@ -55,7 +55,7 @@ enum layers{
     NUM_WORD,
     SYM,
     SYMR,
-    DIG,
+    NAV,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -77,13 +77,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [BASE] = LAYOUT_LR(
-    KC_BSPC,        KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,
+    KC_ESC,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,
     KC_TAB,         LCTL_T(KC_A),   LSFT_T(KC_S),   KC_D,           LT(SYM,KC_F),   KC_G,
                     LGUI_T(KC_Z),   KC_X,           KC_C,           KC_V,           KC_B,
-    KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           TG(NUM_WORD),
+    KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           xxx,
     KC_H,           LT(SYM,KC_J),   KC_K,           LSFT_T(KC_L),   KC_LCTL,        KC_ENT,
     KC_N,           KC_M,           LGUI(KC_1),     LCTL(KC_L),     KC_LGUI,
-    LALT_T(KC_ESC), KC_LEFT,        KC_RGHT,        LALT_T(KC_DEL),
+    KC_LALT,        TG(NUM_WORD),   KC_BSPC,        KC_LALT,
     KC_MS_U,KC_BTN2,KC_WH_U, KC_BTN1,KC_MS_L,KC_MS_D,KC_MS_R,KC_WH_D),
 
 
@@ -131,14 +131,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,_______,_______, _______,_______,_______,_______,_______),
 
 
-[DIG] = LAYOUT_LR(
-    xxx,            KC_1,           KC_2,           KC_3,           KC_4,           KC_5,
-    KC_F12,         KC_LCTL,        KC_LSFT,        xxx,            xxx,            xxx,
+[NAV] = LAYOUT_LR(
+    xxx,            xxx,            xxx,            xxx,            xxx,            xxx,
+    KC_F12,         KC_LCTL,        KC_LSFT,        xxx,            xxx,            KBD_TOGGLE,
                     KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,
-    KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           xxx,
-    KBD_TOGGLE,     KC_DOWN,        KC_UP,          KC_LSFT,        KC_LCTL,        KC_F11,
+    xxx,            KC_HOME,        KC_DOWN,        KC_UP,          KC_END,         xxx,
+    xxx,            KC_LEFT,        xxx,            xxx,            KC_RGHT,        KC_F11,
     KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,
-    _______,        KC_HOME,        KC_END,         _______,
+    _______,        _______,        KC_DEL,        _______,
     KC_VOLU,KC_MUTE,_______, KC_PSCR,KC_INS,KC_VOLD,_______,_______), 
 };
 
