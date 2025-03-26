@@ -44,8 +44,8 @@ L11,L12,L13,L14,L15,L16,xxx,xxx,R11,R12,R13,R14,R15,R16,xxx,xxx,\
 L21,L22,L23,L24,L25,L26,xxx,xxx,R21,R22,R23,R24,R25,R26,xxx,\
 L31,L32,L33,L34,L35,xxx,xxx,xxx,R31,R32,R33,R34,R35,xxx,KC_PGUP,\
 KC_CAPS,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx,KC_PGDN,\
-xxx,xxx,KC_LALT,TL1,TL2,xxx,xxx,TR1,TR2,xxx,xxx,MU,M2,WU,\
-xxx,xxx,xxx,LT(NAV,KC_SPC),xxx,M1,ML,MD,MR,WD)
+xxx,xxx,xxx,TL1,TL2,xxx,xxx,TR1,TR2,xxx,xxx,MU,M2,WU,\
+xxx,KC_LGUI,KC_LALT,LT(FN,KC_SPC),KC_LALT,M1,ML,MD,MR,WD)
 
 enum layers{
     WIN_BASE,
@@ -56,6 +56,7 @@ enum layers{
     SYM,
     SYMR,
     NAV,
+    FN,   
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -80,10 +81,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,
     KC_TAB,         LCTL_T(KC_A),   LSFT_T(KC_S),   KC_D,           LT(SYM,KC_F),   KC_G,
                     KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,
-    KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           xxx,
+    KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           TG(NUM_WORD),
     KC_H,           LT(SYM,KC_J),   KC_K,           LSFT_T(KC_L),   KC_LCTL,        KC_ENT,
-    KC_N,           KC_M,           LGUI(KC_1),     LCTL(KC_L),     xxx,
-    KC_LGUI,        TG(NUM_WORD),   KC_BSPC,        KC_LALT,
+    KC_N,           KC_M,           xxx,            LCTL(KC_L),     xxx,
+    MO(NAV),        KC_DEL,         KC_BSPC,        TG(NAV),
     KC_MS_U,KC_BTN2,KC_WH_U, KC_BTN1,KC_MS_L,KC_MS_D,KC_MS_R,KC_WH_D),
 
 
@@ -132,14 +133,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [NAV] = LAYOUT_LR(
-    xxx,            xxx,            xxx,            xxx,            xxx,            xxx,
-    KC_F12,         KC_LCTL,        KC_LSFT,        xxx,            xxx,            KBD_TOGGLE,
+    _______,        xxx,            xxx,            xxx,            xxx,            xxx,
+    _______,        KC_LCTL,        KC_LSFT,        xxx,            xxx,            xxx,
+                    xxx,            xxx,            xxx,            xxx,            xxx,
+    KC_PGUP,        KC_HOME,        KC_UP,          KC_END,         xxx,            xxx,
+    KC_PGDN,        KC_LEFT,        KC_DOWN,        KC_RGHT,        xxx,            _______,
+    xxx,            LCTL(KC_LEFT),  xxx,            LCTL(KC_RGHT),  xxx,
+    _______,        _______,        _______,        _______,
+    _______,_______,_______, _______,_______,_______,_______,_______),
+
+
+[FN] = LAYOUT_LR(
+    xxx,            LGUI(KC_1),     LGUI(KC_2),     LGUI(KC_3),     LGUI(KC_4),     LGUI(KC_5),
+    KC_F12,         LCTL(KC_1),     LCTL(KC_2),     LCTL(KC_3),     LCTL(KC_4),     LCTL(KC_5),
                     KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,
-    xxx,            KC_HOME,        KC_DOWN,        KC_UP,          KC_END,         xxx,
-    xxx,            KC_LEFT,        KC_PGDN,        KC_PGUP,        KC_RGHT,        KC_F11,
+    xxx,            xxx,            xxx,            xxx,            xxx,            xxx,
+    KBD_TOGGLE,     xxx,            xxx,            xxx,            xxx,            KC_F11,
     KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,
-    _______,        _______,        KC_DEL,         _______,
-    KC_VOLU,KC_MUTE,_______, KC_PSCR,KC_INS,KC_VOLD,_______,_______), 
+    _______,        _______,        _______,        _______,
+    KC_VOLU,KC_MUTE,_______, KC_PSCR,KC_INS,KC_VOLD,_______,_______),
+    
 };
 
 
@@ -224,8 +237,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (IS_LAYER_ON(NUM_WORD)) {
-        for (uint8_t i = 1; i < 13; i++)
+        for (uint8_t i = 1; i < 16; i++)
             rgb_matrix_set_color(i, RGB_WHITE);
     }
+
+    if (IS_LAYER_ON(NAV)) {
+        rgb_matrix_set_color(54, RGB_CYAN);
+        rgb_matrix_set_color(55, RGB_CYAN);
+        rgb_matrix_set_color(69, RGB_CYAN);
+    }
+
     return false;
 }
