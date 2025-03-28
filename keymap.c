@@ -9,26 +9,31 @@ enum custom_keycodes {
 #define NUM_WORD_IDLE_TIMEOUT 5000
 
 
-// OS is expected to have a custom Russian layout where:
-// - Shift+digit is the same as on the English layout;
-// - following symbols are defined on the ALGR layer
-#define RU_QUOT ALGR(KC_Q)
-#define RU_COMM ALGR(KC_W)
-#define RU_DOT ALGR(KC_E)
-#define RU_DQUO ALGR(KC_R)
-#define RU_LCBR ALGR(KC_I)
-#define RU_RCBR ALGR(KC_O)
-#define RU_PIPE ALGR(KC_BSLS)
-#define RU_SLSH ALGR(KC_F)
-#define RU_TILD ALGR(KC_H)
-#define RU_LBRC ALGR(KC_K)
-#define RU_RBRC ALGR(KC_L)
-#define RU_COLN ALGR(KC_SCLN)
-#define RU_SCLN ALGR(KC_Z)
-#define RU_GRV ALGR(KC_N)
-#define RU_LABK ALGR(KC_COMM)
-#define RU_RABK ALGR(KC_DOT)
-#define RU_QUES ALGR(KC_SLSH)
+// One of the goals of this keymap is to share keyboard shortcuts for symbols between English and Russian layouts.
+// Default layouts have issues:
+// 1) English layout misses № (do not use it---so not a problem)
+// 2) Russian layout misses #$&'<>@[]^`{|}~
+// 3) Same shortcuts may map to different symbols (e.g. shift+2 is @ on English layout and " on Russian)
+// 4) Different shortcuts may be needed for same symbols (e.g. to type " use shift+' on English layout and shift+2 on Russian layout )
+// 
+// To address that, the separate layer for symbols is used (see SYM for English layout).
+// To have the same shortcuts when Russian layout is active, I need a custom Russian layout that defines missed symbols.
+#define RU_HASH ALGR(KC_Q)
+#define RU_DLR ALGR(KC_W)
+#define RU_AMPR ALGR(KC_E)
+#define RU_QUOT ALGR(KC_R)
+#define RU_LABK ALGR(KC_T)
+#define RU_RABK ALGR(KC_Y)
+#define RU_AT ALGR(KC_U)
+#define RU_LBRC ALGR(KC_I)
+#define RU_RBRC ALGR(KC_O)
+#define RU_CIRC ALGR(KC_P)
+#define RU_GRV ALGR(KC_A)
+#define RU_LCBR ALGR(KC_S)
+#define RU_PIPE ALGR(KC_D)
+#define RU_RCBR ALGR(KC_F)
+#define RU_TILD ALGR(KC_G)
+
 
 #define LAYOUT_LR(\
     L11,L12,L13,L14,L15,L16,\
@@ -122,12 +127,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [SYMR] = LAYOUT_LR(
-    RU_TILD,        RU_PIPE,        RU_LABK,        RU_RABK,        KC_DLR,         KC_GRV,
+    RU_TILD,        RU_PIPE,        RU_LABK,        RU_RABK,        RU_DLR,         KC_GRV,
     RU_GRV,         KC_EXLM,        KC_MINS,        KC_PLUS,        KC_EQL,         KC_UNDS,
-                    RU_COLN,        RU_SLSH,        KC_ASTR,        KC_BSLS,        RU_SCLN,
-    KC_CIRC,        KC_HASH,        KC_LPRN,        KC_RPRN,        KC_AMPR,        KC_PERC,
-    RU_LCBR,        RU_DQUO,        RU_COMM,        RU_DOT,         RU_QUES,        RU_QUOT,
-    RU_RCBR,        KC_RBRC,        RU_LBRC,        RU_RBRC,        KC_AT,
+                    LSFT(KC_6),     LSFT(KC_BSLS),  KC_ASTR,        KC_BSLS,        LSFT(KC_4),
+    RU_CIRC,        RU_HASH,        KC_LPRN,        KC_RPRN,        RU_AMPR,        KC_PERC,
+    RU_LCBR,        LSFT(KC_2),     LSFT(KC_SLSH),  KC_SLSH,        LSFT(KC_7),       RU_QUOT,
+    RU_RCBR,        KC_RBRC,        RU_LBRC,        RU_RBRC,        RU_AT,
     _______,        _______,        _______,        _______,
     _______,_______,_______, _______,_______,_______,_______,_______),
 
@@ -144,13 +149,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [FN] = LAYOUT_LR(
-    xxx,            LGUI(KC_1),     LGUI(KC_2),     LGUI(KC_3),     LGUI(KC_4),     LGUI(KC_5),
-    KC_F12,         LCTL(KC_1),     LCTL(KC_2),     LCTL(KC_3),     LCTL(KC_4),     LCTL(KC_5),
+    xxx,            xxx,            xxx,            xxx,            xxx,            xxx,
+    KC_F12,         LGUI(KC_1),     LGUI(KC_2),     LGUI(KC_3),     LGUI(KC_4),     LGUI(KC_5),
                     KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,
     xxx,            xxx,            xxx,            xxx,            xxx,            xxx,
-    KBD_TOGGLE,     xxx,            xxx,            xxx,            xxx,            KC_F11,
+    LCTL(KC_5),     LCTL(KC_1),     LCTL(KC_2),     LCTL(KC_3),     LCTL(KC_4),     KC_F11,
     KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,
-    _______,        _______,        _______,        _______,
+    _______,        _______,        KBD_TOGGLE,     _______,
     KC_VOLU,KC_MUTE,_______, KC_PSCR,KC_INS,KC_VOLD,_______,_______),
     
 };

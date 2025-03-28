@@ -1,0 +1,21 @@
+default
+xkb_symbols "basic" {
+    include "ru(winkeys)"
+
+    key <AD01>	{[   Cyrillic_shorti,   Cyrillic_SHORTI, numbersign  ]}; // #
+    key <AD02>	{[      Cyrillic_tse,      Cyrillic_TSE, dollar  ]}; // $
+    key <AD03>	{[        Cyrillic_u,        Cyrillic_U, ampersand  ]}; // &
+    key <AD04>	{[       Cyrillic_ka,       Cyrillic_KA, apostrophe  ]}; // ' 
+    key <AD05>	{[       Cyrillic_ie,       Cyrillic_IE, less  ]}; // <
+    key <AD06>	{[       Cyrillic_en,       Cyrillic_EN, greater  ]}; // >
+    key <AD07>	{[      Cyrillic_ghe,      Cyrillic_GHE, at  ]}; // @
+    key <AD08>	{[      Cyrillic_sha,      Cyrillic_SHA, bracketleft  ]}; // [ 
+    key <AD09>	{[    Cyrillic_shcha,    Cyrillic_SHCHA, bracketright  ]}; // ]
+    key <AD10>	{[       Cyrillic_ze,       Cyrillic_ZE, asciicircum  ]}; // ^
+    
+    key <AC01>	{[       Cyrillic_ef,       Cyrillic_EF, grave  ]}; // `
+    key <AC02>	{[     Cyrillic_yeru,     Cyrillic_YERU, braceleft  ]}; // {
+    key <AC03>	{[       Cyrillic_ve,       Cyrillic_VE, bar  ]}; // |
+    key <AC04>	{[        Cyrillic_a,        Cyrillic_A, braceright  ]}; // }
+    key <AC05>	{[       Cyrillic_pe,       Cyrillic_PE, asciitilde  ]}; // ~
+};

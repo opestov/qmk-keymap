@@ -25,4 +25,10 @@ qmk clean
 qmk flash -kb keychron/k3_pro/ansi/rgb -km 1
 ```
 
+Windows
+Install ru+. 
 
+Linux
+```
+sudo cp custom /usr/share/X11/xkb/symbols/custom
+```
