@@ -149,8 +149,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [FN] = LAYOUT_LR(
-    xxx,            xxx,            xxx,            xxx,            xxx,            xxx,
-    KC_F12,         LGUI(KC_1),     LGUI(KC_2),     LGUI(KC_3),     LGUI(KC_4),     LGUI(KC_5),
+    xxx,            LGUI(KC_5),     LGUI(KC_6),     LGUI(KC_7),     LGUI(KC_8),     xxx,
+    KC_F12,         LGUI(KC_1),     LGUI(KC_2),     LGUI(KC_3),     LGUI(KC_4),     xxx,
                     KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,
     xxx,            xxx,            xxx,            xxx,            xxx,            xxx,
     LCTL(KC_5),     LCTL(KC_1),     LCTL(KC_2),     LCTL(KC_3),     LCTL(KC_4),     KC_F11,
