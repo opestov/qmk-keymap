@@ -27,7 +27,7 @@ ln -s ~/qmk/qmk-keymap/ ~/qmk/firmware/keyboards/keychron/k3_pro/ansi/rgb/keymap
 
 Compile/Flash
 ```
-. ~/qmk/qmk-venv/bin/activate && cd ~/qmk/wireless_playground
+. ~/qmk/qmk-venv/bin/activate && cd ~/qmk/firmware
 qmk clean
 qmk flash -kb keychron/k3_pro/ansi/rgb -km 1
 ```
