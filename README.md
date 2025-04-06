@@ -35,4 +35,11 @@ qmk flash -kb keychron/k3_pro/ansi/rgb -km 1
 Host OS
 
 * Windows: install ru+.
-* Linux: change `/usr/share/X11/xkb/symbols/custom` to `custom`.
+* Linux: change `/usr/share/X11/xkb/symbols/custom` to `custom`. Make sure that level3 switcher is set to Right Alt.
+```
+$ gsettings get org.gnome.desktop.input-sources xkb-options
+['lv3:menu_switch']
+$ gsettings set org.gnome.desktop.input-sources xkb-options "['lv3:ralt_switch']"
+$ gsettings get org.gnome.desktop.input-sources xkb-options
+['lv3:ralt_switch']
+```
